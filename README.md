@@ -7,19 +7,19 @@ Point-1:
 Concerns/Doubts: 
 1.	Is their any Relese document for new versoin 3 to know latest changes?
 2.	What is th implicit wait while getting huge response?
-3.      Is request depends on System Date and Time?
-4.      Is their any plugins required while testing this API?
-5.      How many users information it will save in DB?
+3.  Is request depends on System Date and Time?
+4.  Is their any plugins required while testing this API?
+5.  How many users information it will save in DB?
 6.	Count for invalid logins for returning 403 and 401 responces?
+7.  Is that DB is Static or Dynamic?
 
 Approach: 
 	To start with
-1.	Basic Schema/Field level input validations and Database validation.
-2.	Tests for Specifications such as Authorization (Security), Failed login limit, Pagination etc.
-3.	Core Functionality/Business Logic
-4.	Negative Test Cases
-5.	Reliability tests (Rate limiting)
-6.	LSPS (Load, Stress, Performance, Scalability) testing
+1.	DB validations while add or update new tags in xml request.
+2.	Tests for login attemps with same and different users. 
+3.	Happy Path tests with help of business flow.
+4.	Negative scenario related tests
+5.	End to End flow tests to perform integration tests.
 
 TESTS: 
 Unit test, Adhok test, Load test, Peformance test, Functional test, Integration test, Regression test
