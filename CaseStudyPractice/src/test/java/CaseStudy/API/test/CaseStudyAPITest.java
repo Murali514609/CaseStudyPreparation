@@ -4,8 +4,16 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-import org.openqa.selenium.remote.Response;
+import org.hamcrest.Matchers;
 import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Test;
+
+import com.aventstack.extentreports.ExtentReports;
+
+import io.restassured.RestAssured;
+import io.restassured.http.Header;
+import io.restassured.http.Headers;
+import io.restassured.response.Response;
 
 
 public class CaseStudyAPITest {
@@ -19,48 +27,56 @@ public class CaseStudyAPITest {
 
 	@Test
 	public void validateAPIUrlResponse() {
-		int responseCode = response.getStatusCode();
-		assertTrue(responseCode == 200);
-	}
-
-	@Test
-	public void printResponse() {
-		response.prettyPrint();
-	}
-
-	@Test
-	public void verifyRepositoryCount() {
-		List<Integer> repositoryCount = response.getBody().jsonPath().getList("$");
-		System.out.println(repositoryCount.size());
-		assertTrue(repositoryCount.size() == 6);
-
-	}
-
-	@Test
-	public void captureResponseHeadersAndPrint() {
-		Headers headersCaptured = response.getHeaders();
-		Iterator<Header> headerIterator = headersCaptured.iterator();
-		while (headerIterator.hasNext()) {
-			Header header = (Header) headerIterator.next();
-			System.out.println("Key: "+header.getName()+", Value: "+header.getValue());
+		int responseCode = myresponce.getStatusCode();
+		if(responseCode == 200) {
+			System.out.println("Success");
+		} else {
+			System.out.println("Fail");
 		}
 	}
 
 	@Test
-	public void assertListOfRepositoriesIds() {
-		response.then().body("id", Matchers.hasItems(41202414, 152239814, 151860805, 117455365, 106032543, 117455272));
+	public void validateOwnerNodeID() {
+		String nodeId = myresponce.getBody().jsonPath().get("owner.node_id[0]");
+		if(nodeId.equals("MDQ6VXNlcjQ1NTkzNjg0")) {
+			System.out.println("Success");
+		} else {
+			System.out.println("Fail");
+		}
+		
+	}
+	
+	@Test
+	public void validateOwnerName() {
+		String nodeId = myresponce.getBody().jsonPath().get("owner.login[0]");
+		if(nodeId.equals("Murali514609")) {
+			System.out.println("Success");
+		} else {
+			System.out.println("Fail");
+		}
+		
 	}
 
 	@Test
-	public void assertDataAtSpecificPath() {
-		String nodeId = response.getBody().jsonPath().get("owner.node_id[0]");
-		assertTrue(nodeId.equals("MDQ6VXNlcjIxODc1NzA="));
+	public void validateName() {
+		String nodeId = myresponce.getBody().jsonPath().get("name");
+		if(nodeId.equals("CaseStudyPreparation")) {
+			System.out.println("Success");
+		} else {
+			System.out.println("Fail");
+		}
+		
 	}
-
+	
 	@Test
-	public void getMapData() {
-		Map<String, String> ownerMap = response.body().jsonPath().getMap("owner[0]");
-		assertTrue(ownerMap.containsValue("binnujesudasan"));
+	public void validateUserId() {
+		String nodeId = myresponce.getBody().jsonPath().get("id");
+		if(nodeId.equals("160344627")) {
+			System.out.println("Success");
+		} else {
+			System.out.println("Fail");
+		}
+		
 	}
 
 }
