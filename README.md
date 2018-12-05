@@ -5,11 +5,12 @@ ANSWERS:
 Point-1:
 
 Concerns/Doubts: 
-1.	What are all the schema changes made as part of version 3/ If there are any changes?
-2.	Does it support the lower version as well (backward compatibility)?
-3.	What is the exact count for invalid logins before returning 403 Forbidden instead of 401 Unauthorized?
-4.	What is the default timeout error (In case of huge response)?
-5.	Any mocks (Drivers/Stubs) being used?
+1.	Is their any Relese document for new versoin 3 to know latest changes?
+2.	What is th implicit wait while getting huge response?
+3.      Is request depends on System Date and Time?
+4.      Is their any plugins required while testing this API?
+5.      How many users information it will save in DB?
+6.	Count for invalid logins for returning 403 and 401 responces?
 
 Approach: 
 	To start with
@@ -20,12 +21,15 @@ Approach:
 5.	Reliability tests (Rate limiting)
 6.	LSPS (Load, Stress, Performance, Scalability) testing
 
-Tests: 
+TESTS: 
 Unit test, Adhok test, Load test, Peformance test, Functional test, Integration test, Regression test
 
-Tools: [Java, Rest Assured, TestNG, Jenkins]/[JMeter, Ant, Jenkins]
-
-Endpoint: https://api.github.com/ users/binnujesudasan/repos
+SKILLS :
+Language : Java
+Jars : Restassured, Selenium
+Code Repository tool: GIT
+Reports : TestNG, Extent, Cucumber
+Test cases available and Bug report tool : Jenlkins
 
 
 
